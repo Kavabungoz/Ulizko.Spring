@@ -39,6 +39,12 @@
         </property>
     </bean>
 
+    <bean id="client1" class="model.Client">
+        <property name="name" value="Ivan"/>
+        <property name="age" value="19"/>
+        <property name="weight" value="75"/>
+    </bean>
+
     <bean id="ticketDao" class="dao.TicketDaoImpl"/>
 
     <bean id="stallholderDao" class="dao.StallholderDaoImpl" autowire="constructor">
