@@ -2,10 +2,15 @@ package dao;
 
 import model.Ticket;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TicketDaoImpl implements TicketDAO {
     protected List<Ticket> elements;
+
+    public TicketDaoImpl(List<Ticket> elements) {
+        this.elements = elements;
+    }
 
     @Override
     public void save(Ticket ticket) {

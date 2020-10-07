@@ -1,10 +1,11 @@
 package service;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import model.Ticket;
 
-public class ServiceTicket {
-    private static final Logger log = LogManager.getLogger(ServiceTicket.class.getName());
+public interface ServiceTicket {
 
-
+    public void addTicket(Ticket ticket);
+    public void getTicket(Ticket ticket);
+    public void updateTicket(Ticket ticket);
+    public void deleteTicket(Ticket ticket);
 }

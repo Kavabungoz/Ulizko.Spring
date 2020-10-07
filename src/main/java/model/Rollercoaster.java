@@ -5,33 +5,33 @@ package model;
 */
 
 public class Rollercoaster {
-    private int ageRaiting;
-    private int weightRaiting;
+    private int ageRating;
+    private int weightRating;
 
     public Rollercoaster() {
     }
 
-    public int getAgeRaiting() {
-        return ageRaiting;
+    public int getAgeRating() {
+        return ageRating;
     }
 
-    public void setAgeRaiting(int ageRaiting) {
-        this.ageRaiting = ageRaiting;
+    public void setAgeRating(int ageRating) {
+        this.ageRating = ageRating;
     }
 
-    public int getWeightRaiting() {
-        return weightRaiting;
+    public int getWeightRating() {
+        return weightRating;
     }
 
-    public void setWeightRaiting(int weightRaiting) {
-        this.weightRaiting = weightRaiting;
+    public void setWeightRating(int weightRating) {
+        this.weightRating = weightRating;
     }
 
     @Override
     public String toString() {
         return "Rollercoaster{" +
-                "ageRaiting=" + ageRaiting +
-                ", weightRaiting=" + weightRaiting +
+                "ageRaiting=" + ageRating +
+                ", weightRaiting=" + weightRating +
                 '}';
     }
 }

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="rollercoaster" class="model.Rollercoaster">
-        <property name="ageRaiting" value="18"/>
-        <property name="weightRaiting" value="150"/>
+        <property name="ageRating" value="18"/>
+        <property name="weightRating" value="150"/>
     </bean>
 
     <bean id="ticket1" class="model.Ticket">
         <property name="dateOfSale" value="06.10.2020"/>
-        <property name="id" value="000000000000001"/>
+        <property name="id" value="300000000000001"/>
         <property name="listOfAttractions">
             <list>
                 <ref bean="rollercoaster"/>
@@ -21,13 +23,20 @@
 
     <bean id="ticket2" class="model.Ticket">
         <property name="dateOfSale" value="07.10.2020"/>
-        <property name="id" value="000000000000002"/>
+        <property name="id" value="300000000000002"/>
         <property name="listOfAttractions">
             <list>
                 <ref bean="rollercoaster"/>
             </list>
         </property>
     </bean>
+
+    <util:list id="ticketList" list-class="java.util.ArrayList">
+        <list>
+            <ref bean="ticket1"/>
+            <ref bean="ticket2"/>
+        </list>
+    </util:list>
 
     <bean id="stallHolder1" class="model.Stallholder">
         <property name="name" value="Galina"/>
@@ -42,16 +51,22 @@
     <bean id="client1" class="model.Client">
         <property name="name" value="Ivan"/>
         <property name="age" value="19"/>
-        <property name="weight" value="75"/>
+        <property name="weight" value="65"/>
     </bean>
 
-    <bean id="ticketDao" class="dao.TicketDaoImpl"/>
+    <bean id="ticketDao" class="dao.TicketDaoImpl" autowire="constructor">
+        <constructor-arg ref="ticket1"/>
+    </bean>
+
+    <bean id="serviceTicket" class="service.ServiceTicketImpl" autowire="constructor">
+        <constructor-arg ref="ticketDao"/>
+    </bean>
 
     <bean id="stallholderDao" class="dao.StallholderDaoImpl" autowire="constructor">
         <constructor-arg ref="stallHolder1"/>
     </bean>
 
-    <bean id="serviceStallholder" class="service.ServiceStallholder" autowire="constructor">
+    <bean id="serviceStallholder" class="service.ServiceStallholderImpl" autowire="constructor">
         <constructor-arg ref="stallholderDao"/>
     </bean>
 
