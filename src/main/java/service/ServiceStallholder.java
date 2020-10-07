@@ -9,6 +9,10 @@ public class ServiceStallholder {
     private static final Logger log = LogManager.getLogger(ServiceStallholder.class.getName());
     private StallholderDaoImpl stallholderDaoImpl;
 
+    public ServiceStallholder(StallholderDaoImpl stallholderDaoImpl) {
+        this.stallholderDaoImpl = stallholderDaoImpl;
+    }
+
     public void addStallholder(Stallholder stallholder){
         log.info("Кассир был нанят на работу.");
         stallholderDaoImpl.save(stallholder);
@@ -27,5 +31,12 @@ public class ServiceStallholder {
     public void deleteStallholder(Stallholder stallholder){
         log.info("Кассир был уволен!");
         stallholderDaoImpl.delete(stallholder);
+    }
+
+    @Override
+    public String toString() {
+        return "ServiceStallholder{" +
+                "stallholderDaoImpl=" + stallholderDaoImpl +
+                '}';
     }
 }

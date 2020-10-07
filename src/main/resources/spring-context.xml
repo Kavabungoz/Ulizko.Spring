@@ -4,5 +4,49 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="rollercoaster" class="model.Rollercoaster">
+        <property name="ageRaiting" value="18"/>
+        <property name="weightRaiting" value="150"/>
+    </bean>
+
+    <bean id="ticket1" class="model.Ticket">
+        <property name="dateOfSale" value="06.10.2020"/>
+        <property name="id" value="000000000000001"/>
+        <property name="listOfAttractions">
+            <list>
+                <ref bean="rollercoaster"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="ticket2" class="model.Ticket">
+        <property name="dateOfSale" value="07.10.2020"/>
+        <property name="id" value="000000000000002"/>
+        <property name="listOfAttractions">
+            <list>
+                <ref bean="rollercoaster"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="stallHolder1" class="model.Stallholder">
+        <property name="name" value="Galina"/>
+        <property name="listOfTickets">
+            <list>
+                <ref bean="ticket1"/>
+                <ref bean="ticket2"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="ticketDao" class="dao.TicketDaoImpl"/>
+
+    <bean id="stallholderDao" class="dao.StallholderDaoImpl" autowire="constructor">
+        <constructor-arg ref="stallHolder1"/>
+    </bean>
+
+    <bean id="serviceStallholder" class="service.ServiceStallholder" autowire="constructor">
+        <constructor-arg ref="stallholderDao"/>
+    </bean>
 
 </beans>

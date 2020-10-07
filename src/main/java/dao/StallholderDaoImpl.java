@@ -7,6 +7,10 @@ import java.util.List;
 public class StallholderDaoImpl implements StallholderDAO {
     protected List<Stallholder> elements;
 
+    public StallholderDaoImpl(List<Stallholder> element) {
+        this.elements = element;
+    }
+
     @Override
     public void save(Stallholder stallholder) {
         elements.add(stallholder);

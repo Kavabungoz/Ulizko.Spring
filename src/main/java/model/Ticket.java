@@ -7,7 +7,7 @@ import java.util.List;
 */
 
 public class Ticket {
-    private int dateOfSale;
+    private String dateOfSale;
     private Long id;
     private List<Rollercoaster> listOfAttractions; /* в списке пока только 1 аттракцион */
 
@@ -20,6 +20,14 @@ public class Ticket {
 
     public void setListOfAttractions(List<Rollercoaster> listOfAttractions) {
         this.listOfAttractions = listOfAttractions;
+    }
+
+    public String getDateOfSale() {
+        return dateOfSale;
+    }
+
+    public void setDateOfSale(String dateOfSale) {
+        this.dateOfSale = dateOfSale;
     }
 
     public Long getId() {
